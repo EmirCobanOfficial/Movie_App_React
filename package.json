@@ -1,7 +1,8 @@
 {
-  "name": "react-app",
+  "name": "movie-app-react",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "A simple movie catalog with a personal watchlist, built with React, Vite and Bootstrap.",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,7 +14,6 @@
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.13.1",
     "react": "^19.1.0",
-    "react-app": "file:",
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
