@@ -13,9 +13,13 @@ import WatchList from "./components/WatchList";
 import { movie_list } from "./data";
 
 export default function App() {
-  const [movies, setMovies] = useState(movie_list);
+  const [query, setQuery] = useState("");
   const [watchListMovies, setWatchListMovies] = useState([]);
   const [isWatchListOpen, setIsWatchListOpen] = useState(false);
+
+  const filteredMovies = movie_list.filter((movie) =>
+    movie.title.toLowerCase().includes(query.trim().toLowerCase())
+  );
 
   function handleAddToWatchList(movie) {
     const isAddedToList = watchListMovies.map((i) => i.id).includes(movie.id);
@@ -33,7 +37,7 @@ export default function App() {
     <>
       <Header>
         <Logo />
-        <SearchForm />
+        <SearchForm query={query} onQueryChange={setQuery} />
         <WatchListButton
           movies={watchListMovies}
           onSetIsWatchListOpen={setIsWatchListOpen}
@@ -46,7 +50,7 @@ export default function App() {
           isWatchListOpen={isWatchListOpen}
           onRemoveFromWatchList={handleRemoveFromWatchList}
         />
-        <MovieList movies={movies} onAddToList={handleAddToWatchList} />
+        <MovieList movies={filteredMovies} onAddToList={handleAddToWatchList} />
       </Main>
       <Footer />
     </>
